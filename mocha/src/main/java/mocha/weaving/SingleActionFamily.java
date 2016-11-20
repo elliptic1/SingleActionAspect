@@ -25,5 +25,6 @@ import static java.lang.annotation.RetentionPolicy.CLASS;
 
 @Target({TYPE, METHOD})
 @Retention(CLASS)
-public @interface GuardClick {
+public @interface SingleActionFamily {
+    String value() default "SingleAction";
 }

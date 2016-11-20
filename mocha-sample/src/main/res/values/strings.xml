@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">Mocha Sample</string>
-    <string name="title_activity_main">Mocha Sample</string>
+    <string name="app_name">Single Action Family Sample</string>
+    <string name="title_activity_main">Single Action Family Sample</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="msg_formatter">Clicked: %d</string>
+    <string name="btn1text">Family 1: inc by 1</string>
+    <string name="btn2text">Family 1: inc by 1</string>
+    <string name="btn3text">Family 2: inc by 10</string>
+    <string name="btn4text">Family 2: inc by 10</string>
+    <string name="msg_formatter">Number: %d</string>
+    <string name="_3_second_wait_for_each_family">3 Second wait for each family</string>
 </resources>

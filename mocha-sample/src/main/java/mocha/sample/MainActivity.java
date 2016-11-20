@@ -21,7 +21,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import mocha.weaving.GuardClick;
+import mocha.weaving.SingleActionFamily;
 
 public class MainActivity extends Activity {
 
@@ -35,9 +35,33 @@ public class MainActivity extends Activity {
         showClickCount(clickCountTextView);
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
-            @GuardClick
+            @SingleActionFamily("add1")
             public void onClick(View v) {
                 mClickCount++;
+                showClickCount(clickCountTextView);
+            }
+        });
+        findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            @SingleActionFamily("add1")
+            public void onClick(View v) {
+                mClickCount++;
+                showClickCount(clickCountTextView);
+            }
+        });
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            @SingleActionFamily("add10")
+            public void onClick(View v) {
+                mClickCount += 10;
+                showClickCount(clickCountTextView);
+            }
+        });
+        findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            @SingleActionFamily("add10")
+            public void onClick(View v) {
+                mClickCount += 10;
                 showClickCount(clickCountTextView);
             }
         });
