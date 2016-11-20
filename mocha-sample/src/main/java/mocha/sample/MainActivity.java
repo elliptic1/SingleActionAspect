@@ -19,11 +19,17 @@ package mocha.sample;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import mocha.weaving.SingleActionFamily;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity
+        implements MainActivityListener {
 
     private int mClickCount = 0;
 
@@ -49,6 +55,19 @@ public class MainActivity extends Activity {
                 showClickCount(clickCountTextView);
             }
         });
+        ListView listView = (ListView) findViewById(R.id.list_id);
+        listView.setAdapter(new MyListAdapter(this, new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)), this));
+        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+            @SingleActionFamily("add1")
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mClickCount++;
+                showClickCount(clickCountTextView);
+            }
+        };
+        listView.setOnItemClickListener(onItemClickListener);
+
+
         findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
             @Override
             @SingleActionFamily("add10")
@@ -67,7 +86,8 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void showClickCount(TextView clickCountTextView) {
+    @Override
+    public void showClickCount(TextView clickCountTextView) {
         clickCountTextView.setText(getString(R.string.msg_formatter, mClickCount));
     }
 }

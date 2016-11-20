@@ -53,6 +53,11 @@
         android:layout_marginTop="16dp"
         android:text="@string/btn2text"/>
 
+    <ListView
+        android:id="@+id/list_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btn3"
         android:layout_width="wrap_content"
