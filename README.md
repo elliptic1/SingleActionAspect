@@ -1,10 +1,10 @@
-# mocha
-To avoid multiple rapid clicks on Android's Views with a single annotation "```@GuardClick```"
+# SingleActionAspect
+To avoid multiple rapid clicks on Android's Views with a single annotation "```@SingleActionFamily("familyName")```"
 ```java
 button.setOnClickListener(new View.OnClickListener() {
-    @GuardClick
+    @SingleActionFamily("networkCall")
     public void onClick(View v) {
-        // do your magic.
+        // make network call.
     }
 });
 ```
