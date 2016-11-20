@@ -10,7 +10,6 @@ button.setOnClickListener(new View.OnClickListener() {
 ```
 
 This project uses [AspectJ][AspectJ] to weave code. That will change the client code's line numbers and make it hard to debug. 
-See alternative project: [clickguard][clickguard].
 
 
 # License
@@ -32,4 +31,3 @@ See alternative project: [clickguard][clickguard].
 
 
 [AspectJ]:https://github.com/eclipse/org.aspectj
-[clickguard]:https://github.com/fengdai/clickguard
