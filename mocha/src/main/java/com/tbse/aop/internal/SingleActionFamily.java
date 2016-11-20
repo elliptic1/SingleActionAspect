@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mocha.weaving;
+package com.tbse.aop.internal;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

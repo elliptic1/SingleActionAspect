@@ -26,7 +26,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import mocha.weaving.SingleActionFamily;
+import com.tbse.aop.internal.SingleActionFamily;
 
 public class MainActivity extends Activity
         implements MainActivityListener {

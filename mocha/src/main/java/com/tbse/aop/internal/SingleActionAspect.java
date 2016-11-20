@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mocha.weaving.internal;
+package com.tbse.aop.internal;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -28,10 +28,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import java.util.ArrayList;
 
-import mocha.weaving.SingleActionFamily;
-
 @Aspect
-public class Mocha {
+public class SingleActionAspect {
     private static final String POINTCUT_ON_CLICK_METHOD
             = "execution(void android.view.View.OnClickListener+.onClick(android.view.View))";
     private static final String POINTCUT_ON_ITEM_CLICK_METHOD
@@ -41,7 +39,7 @@ public class Mocha {
     private static String value;
     private static final Handler HANDLER = new Handler(Looper.getMainLooper());
 
-    public Mocha() {
+    public SingleActionAspect() {
         Log.d("aop", "mocha init");
         singleActionFamilies.add("SingleAction");
     }
@@ -51,12 +49,12 @@ public class Mocha {
         Log.d("aop", "clickMethod");
     }
 
-    @Pointcut("clickMethod() && execution(@mocha.weaving.SingleActionFamily * *(..))")
+    @Pointcut("clickMethod() && execution(@com.tbse.aop.internal.SingleActionFamily * *(..))")
     public void annotatedClickMethod() {
         Log.d("aop", "annotatedClickMethod");
     }
 
-    @Pointcut("clickMethod() && within(@mocha.weaving.SingleActionFamily *)")
+    @Pointcut("clickMethod() && within(@com.tbse.aop.internal.SingleActionFamily *)")
     public void clickMethodInsideAnnotatedType() {
         Log.d("aop", "clickMethodInsideAnnotatedtype");
     }
@@ -65,9 +63,9 @@ public class Mocha {
     public Object guard(ProceedingJoinPoint joinPoint) throws Throwable {
 
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        SingleActionFamily guardClick = signature.getMethod()
+        SingleActionFamily singleActionFamily = signature.getMethod()
                 .getAnnotation(SingleActionFamily.class);
-        value = guardClick.value();
+        value = singleActionFamily.value();
 
         if (singleActionFamilies.indexOf(value) == -1) {
             singleActionFamilies.add(value);
