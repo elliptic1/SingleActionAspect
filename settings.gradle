@@ -1,3 +1,3 @@
 rootProject.name = 'mocha-parent'
 
-include ':mocha', ':mocha-sample'
+include ':singleactionaspect', ':singleactionaspect-sample-app'
