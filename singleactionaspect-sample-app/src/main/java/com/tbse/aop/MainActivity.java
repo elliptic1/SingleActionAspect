@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mocha.sample;
+package com.tbse.aop;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -23,10 +23,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.tbse.aop.internal.SingleActionFamily;
+import com.tbse.aop.internal.TrackAnalytics;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.tbse.aop.internal.SingleActionFamily;
+import mocha.sample.R;
 
 public class MainActivity extends Activity
         implements MainActivityListener {
@@ -42,6 +45,7 @@ public class MainActivity extends Activity
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             @SingleActionFamily("add1")
+            @TrackAnalytics(value1 = "btn", value2 = "add1", value3 = "top")
             public void onClick(View v) {
                 mClickCount++;
                 showClickCount(clickCountTextView);
@@ -50,6 +54,7 @@ public class MainActivity extends Activity
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             @SingleActionFamily("add1")
+            @TrackAnalytics(value1 = "btn", value2 = "add1", value3 = "bottom")
             public void onClick(View v) {
                 mClickCount++;
                 showClickCount(clickCountTextView);
@@ -58,8 +63,9 @@ public class MainActivity extends Activity
         ListView listView = (ListView) findViewById(R.id.list_id);
         listView.setAdapter(new MyListAdapter(this, new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)), this));
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
-            @SingleActionFamily("add1")
             @Override
+            @SingleActionFamily("add1")
+            @TrackAnalytics(value1 = "list_item", value2 = "add1", value3 = "")
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mClickCount++;
                 showClickCount(clickCountTextView);
@@ -71,6 +77,7 @@ public class MainActivity extends Activity
         findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
             @Override
             @SingleActionFamily("add10")
+            @TrackAnalytics(value1 = "btn", value2 = "add10", value3 = "first")
             public void onClick(View v) {
                 mClickCount += 10;
                 showClickCount(clickCountTextView);
@@ -79,6 +86,7 @@ public class MainActivity extends Activity
         findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
             @Override
             @SingleActionFamily("add10")
+            @TrackAnalytics(value1 = "btn", value2 = "add10", value3 = "second")
             public void onClick(View v) {
                 mClickCount += 10;
                 showClickCount(clickCountTextView);

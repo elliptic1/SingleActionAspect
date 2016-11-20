@@ -23,7 +23,7 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
-              tools:context="mocha.sample.MainActivity">
+              tools:context="mocha.sample.com.tbse.aop.MainActivity">
 
     <TextView
         android:id="@+id/click_counts"
