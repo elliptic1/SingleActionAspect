@@ -14,9 +14,17 @@ button.setOnClickListener(new View.OnClickListener() {
 button2.setOnClickListener(new View.OnClickListener() {
     @SingleActionFamily("navigateForward")
     public void onClick(View v) {
-        // make network call.
+        // navigate forward.
     }
 });
+
+AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+            @SingleActionFamily("navigateForward")
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // navigate forward.
+            }
+        };
 ```
 
 This project uses [AspectJ][AspectJ] to weave code. That will change the client code's line numbers and make it hard to debug. 
