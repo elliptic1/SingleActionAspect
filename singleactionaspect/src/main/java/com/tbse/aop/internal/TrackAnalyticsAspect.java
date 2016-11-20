@@ -16,8 +16,6 @@
 
 package com.tbse.aop.internal;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -36,7 +34,6 @@ public class TrackAnalyticsAspect {
     private static String value1;
     private static String value2;
     private static String value3;
-    private static final Handler HANDLER = new Handler(Looper.getMainLooper());
 
     @Pointcut(POINTCUT_ON_CLICK_METHOD + " || " + POINTCUT_ON_ITEM_CLICK_METHOD)
     public void clickMethod() {
