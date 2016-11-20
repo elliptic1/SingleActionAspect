@@ -1,5 +1,5 @@
 # SingleActionAspect
-To avoid multiple rapid clicks on Android's Views with a single annotation "```@SingleActionFamily("familyName")```".
+To avoid multiple rapid clicks on Android's Views with a single annotation ```@SingleActionFamily("familyName")```.
 The annotation will only allow the method to be called once every 3 seconds for each family.
 
 
