@@ -1,16 +1,25 @@
-# mocha
-To avoid multiple rapid clicks on Android's Views with a single annotation "```@GuardClick```"
+# SingleActionAspect
+To avoid multiple rapid clicks on Android's Views with a single annotation "```@SingleActionFamily("familyName")```".
+The annotation will only allow the method to be called once every 3 seconds for each family.
+
+
 ```java
 button.setOnClickListener(new View.OnClickListener() {
-    @GuardClick
+    @SingleActionFamily("networkCall")
     public void onClick(View v) {
-        // do your magic.
+        // make network call.
+    }
+}
+
+button2.setOnClickListener(new View.OnClickListener() {
+    @SingleActionFamily("navigateForward")
+    public void onClick(View v) {
+        // make network call.
     }
 });
 ```
 
 This project uses [AspectJ][AspectJ] to weave code. That will change the client code's line numbers and make it hard to debug. 
-See alternative project: [clickguard][clickguard].
 
 
 # License
@@ -32,4 +41,3 @@ See alternative project: [clickguard][clickguard].
 
 
 [AspectJ]:https://github.com/eclipse/org.aspectj
-[clickguard]:https://github.com/fengdai/clickguard
