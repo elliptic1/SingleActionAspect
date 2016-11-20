@@ -1,5 +1,5 @@
 # SingleActionAspect
-To avoid multiple rapid clicks on Android's Views with a single annotation "```@SingleActionFamily("familyName")```".
+To avoid multiple rapid clicks on Android's Views with a single annotation ```@SingleActionFamily("familyName")```.
 The annotation will only allow the method to be called once every 3 seconds for each family.
 
 
@@ -14,8 +14,16 @@ button.setOnClickListener(new View.OnClickListener() {
 button2.setOnClickListener(new View.OnClickListener() {
     @SingleActionFamily("navigateForward")
     public void onClick(View v) {
-        // make network call.
+        // navigate forward.
     }
+});
+
+listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+     @SingleActionFamily("navigateForward")
+     @Override
+     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+         // navigate forward.
+     }
 });
 ```
 
